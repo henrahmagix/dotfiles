@@ -1,0 +1,12 @@
+# Path
+# base
+export PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# postgres
+export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+
+# Sets nodejs path
+export NODE_PATH=$(npm root -g)

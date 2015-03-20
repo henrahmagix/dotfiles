@@ -1,0 +1,65 @@
+# Aliases
+alias l='ls'
+alias ll='ls -al'
+alias lli='ll -i'
+alias llr='ll -R'
+alias dud='du -ch -d 1 .'
+alias cl='clear'
+alias src='source ~/.bash_profile'
+alias acki='ack -i'
+# ag is no longer case-sensitive by default
+alias ag='ag -s'
+alias agi='ag -i'
+alias wcl='wc -l'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias mkdir='mkdir -pv'
+
+# scripts
+alias nf='numfiles'
+alias chbg='changebackground'
+alias chdns='changedns'
+alias issym='issymlink'
+
+# cd
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# vim
+alias m='mvim'
+alias v='mvim -v'
+
+# Git
+alias g='git'
+# Keep git as command git so when anything else calls `git` it doesn't get hub.
+[[ -e $(which hub) ]] && alias g='hub'
+# Quick cd to root of git project
+alias git-root='cd $(git rev-parse --show-toplevel)'
+
+# Gist
+alias gist='gist -o'
+
+# Compass
+alias com='compass'
+alias comw='compass watch'
+alias comc='compass compile'
+alias comcf='compass compile --force'
+
+# Python
+alias py='python'
+
+# Django
+alias pym="python manage.py"
+alias pymrs="python manage.py runserver"
+alias pymrs+="python manage.py runserver_plus"
+alias pyms="python manage.py shell"
+alias pyms+="python manage.py shell_plus"
+
+# Pip
+alias pipr='fixclang; source confirm.sh && REQ=$(find . -name "requirements.*") && [[ "$REQ" != "" ]] && confirm "pip $REQ?" && pip install -r $REQ; unset confirm; resetclang'
+alias pipi='pip install'
+alias pipe='pip install -e'
+alias pipu='pip uninstall'
+
+# Jam
+alias jam-reset='jam ls | xargs jam remove && jam install'

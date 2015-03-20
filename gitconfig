@@ -1,0 +1,133 @@
+[core]
+    excludesfile = ~/.gitignore
+    whitespace = blank-at-eol,cr-at-eol,tab-in-indent
+    pager = less -+S -+X -+F
+
+[user]
+    name = Henry Blyth
+    email = henry@henryblyth.com
+
+[alias]
+    a = add
+    ap = add -p
+    au = add -u
+    # hub overrides alias, so call original command.
+    al = !git alias
+    b = branch
+    ba = branch -a
+    bd = branch -d
+    bv = branch --verbose
+    bvv = branch -vv
+    co = checkout
+    cob = checkout -b
+    cl = clone
+    clp = clone -p
+    ci = commit
+    ca = commit -a
+    cv = commit -v
+    cav = commit -av
+    d = diff
+    dc = diff --cached
+    dcw = diff --cached --color-words
+    df = diff --function-context
+    dh = diff HEAD
+    dhw = diff HEAD --color-words
+    dw = diff --color-words
+    f = fetch
+    fa = fetch --all
+    h = help
+    ignored = !git ls-files -v $(git rev-parse --show-toplevel) | grep '^[[:lower:]]'
+    l = log
+    lf = log --follow
+    ld = log ORIG_HEAD.. --stat --no-merges
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+    m = merge
+    pl = pull
+    plp = pull --prune
+    pp = !git pull && git push
+    pr = pull-request
+    ps = push
+    pst = push --tags
+    psu = ![ '' != $(git symbolic-ref HEAD 2>/dev/null) ] && branch=$(git rev-parse --abbrev-ref HEAD) && remote=${1:-origin} && git push --set-upstream $remote $branch && exit 1
+    r = remote
+    ra = remote add
+    rp = remote prune origin
+    rv = remote -v
+    root = rev-parse --show-toplevel
+    s = status -s
+    ss = status
+    st = stash
+    stb = stash branch
+    stl = stash list
+    sts = stash save
+    stp = stash pop
+    # Altered from example at the bottom of the git-stash man page.
+    stf = !git fsck --unreachable | grep commit | cut -d' ' -f3 | xargs git log --merges --no-walk --grep=WIP --grep=On
+    sub = submodule
+    suba = submodule add
+    subi = submodule init
+    subs = submodule summary
+    subu = submodule update
+    w = whatchanged
+    in = !git fetch && git log ..origin/master
+    out = !git fetch && git log origin/master..
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+    ui = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+
+[color "diff"]
+    meta = yellow
+    frag = magenta bold
+    old = red bold
+    new = green
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[diff]
+    renames = copies
+
+[help]
+    autocorrect = 0
+
+[merge]
+    conflictstyle = diff3
+    tool = threesome
+    defaultToUpstream = true
+
+[mergetool "threesome"]
+    cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
+    trustExitCode = true
+
+[push]
+    default = simple
+
+[rerere]
+    enabled = 1
+
+[status]
+    relativePaths = true
+
+[achievement]
+    upload = true
+
+[github]
+    user = henrahmagix
+
+[gist]
+    browse = true
+
+[ghi]
+    token = !security find-internet-password -a henrahmagix -s github.com -l 'ghi token' -w
+    pager = less

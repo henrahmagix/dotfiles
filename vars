@@ -1,0 +1,19 @@
+# Sublime Text as Default Editor
+export EDITOR="$(which subl) --wait"
+
+# Colours
+export CLICOLOR=1
+export LS_COLORS='di=01;34'
+export DJANGO_COLORS="light"
+
+# force the use of correct arch flags
+export ARCHFLAGS="-arch x86_64"
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
+# Global Bash History
+export PROMPT_COMMAND="history -a"
+
+# Set terminal type to 256 colors.
+export TERM=xterm-256color

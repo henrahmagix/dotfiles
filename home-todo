@@ -1,0 +1,2 @@
+# Todo
+alias t='/usr/local/bin/todo.sh -d ~/Dropbox/todo/todo.cfg'

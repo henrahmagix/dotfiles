@@ -1,0 +1,64 @@
+# OSX settings.
+# http://gist.github.com/erikh/2260182 and http://github.com/ghickman/dotfiles/blob/master/osx
+# http://osxdaily.com/tag/defaults-write/
+
+function OSXSystemPrefs() {
+    echo "Disable auto-correct"
+    defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+    echo "Disable press-and-hold for keys in favor of key repeat"
+    defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+    echo "Set a blazingly fast keyboard repeat rate"
+    defaults write NSGlobalDomain KeyRepeat -float 0.02
+
+    echo "Set a shorter Delay until key repeat"
+    defaults write NSGlobalDomain InitialKeyRepeat -int 12
+
+    echo "Increase window resize speed for Cocoa applications"
+    defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
+    echo "Expand save panel by default"
+    defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+    defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+    echo "Expand print panel by default"
+    defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+    defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+    echo "Save to disk (not to iCloud) by default"
+    defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+    echo "Disable smart quotes as they’re annoying when typing code"
+    defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+    echo "Disable smart dashes as they’re annoying when typing code"
+    defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+    echo "Enable snap-to-grid for desktop icons"
+    /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+
+    echo "Display full POSIX path as Finder window title"
+    defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+    echo "Disable shadow in screenshots"
+    defaults write com.apple.screencapture disable-shadow -bool true
+
+    echo "Enable highlight hover effect for the grid view of a stack (Dock)"
+    defaults write com.apple.dock mouse-over-hilte-stack -bool true
+
+    echo "Enable AirDrop over Ethernet and on unsupported Macs running Lion"
+    defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+
+    echo "Show the ~/Library folder"
+    chflags nohidden ~/Library
+
+    echo "Hide the dock"
+    defaults write com.apple.Dock autohide-delay -float 10000
+
+    echo "Kill affected applications"
+    for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
+}
+
+source confirm.sh
+confirm "Run OSX settings?" && OSXSystemPrefs

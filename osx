@@ -1,0 +1,3 @@
+alias flushDNS='sudo killall -HUP mDNSResponder'
+alias chrome-canary='open /Applications/Google\ Chrome\ Canary.app/'
+alias chrome-canary-no-security='chrome-canary --args --disable-web-security'

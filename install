@@ -1,0 +1,29 @@
+#!/bin/bash
+# Make hardlinks to home directory.
+# - Workplace agnostic.
+
+# Get the pwd of this script.
+DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Default to diff each file before overwriting. -a or --all doesn't diff.
+WRITEALL=0
+[[ $1 =~ ^-a$ ]] || [[ $1 =~ ^--all$ ]] && WRITEALL=1 && shift
+
+DOTFILES="ackrc aliases bash_profile completion gitconfig gitignore path prompt python vars vimrc"
+
+# Get workplace/section specific dotfiles
+for INSTALLFILE in $@; do
+    if [[ -e $DIR/$INSTALLFILE-install ]]; then
+        DOTFILES+=" $(cat $DIR/$INSTALLFILE-install)"
+    else
+        echo "$INSTALLFILE-install doesn't exist"
+    fi
+done
+
+# Install files to home directory using dotfile-linker.sh.
+source $DIR/dotfile-linker.sh
+if [ $WRITEALL -eq 1 ]; then
+    dotfileLinkAll $DIR $DOTFILES
+else
+    dotfileLink $DIR $DOTFILES
+fi

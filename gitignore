@@ -1,0 +1,15 @@
+.DS_Store
+*.pyc
+*.sw[o|p]
+*.un~
+.project
+.rvmrc
+._*
+.venv
+.ropeproject
+.sass-cache
+.env
+*.egg-info
+dist
+.links
+.wiki
