@@ -10,3 +10,6 @@ export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 
 # Sets nodejs path
 export NODE_PATH=$(npm root -g)
+
+# Set Java path (for Selenium)
+export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
