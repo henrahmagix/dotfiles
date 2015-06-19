@@ -35,16 +35,32 @@ function mkvenv {
     workon $name
 }
 
+function linkautoenv {
+    name=${1}
+
+    # make a .env in the current directory for autoenv magic
+    echo "workon $name" > .env
+
+    # symlink the venv to the current dir
+    ln -s "$WORKON_HOME/$name" .venv
+    echo "Symlinked $WORKON_HOME/$name to ./.venv"
+
+    # using mkvirtualenv this way seems to break workon
+    workon $name
+}
+
 # Create a virtual environment.
 function mkvenv3 {
     defaultname=`basename $PWD`
     name=${1:-$defaultname}
     mkvirtualenv $name -a `pwd` -p `which python3`
+    linkautoenv $name
 }
 function mkvenv2 {
     defaultname=`basename $PWD`
     name=${1:-$defaultname}
     mkvirtualenv $name -a `pwd` -p `which python2`
+    linkautoenv $name
 }
 
 function fixclang {
