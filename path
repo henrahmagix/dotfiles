@@ -7,6 +7,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # postgres
 export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 
 # npm bin
 export PATH="node_modules/.bin:$PATH"
