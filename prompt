@@ -59,11 +59,4 @@ GIT_PS1_SHOWUNTRACKEDFILES=True
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=True
 
-docker ps &> /dev/null
-IN_DOCKER=$?
-
 PS1="\[$GREEN\]\u\[$RESET\]@\[$GREEN\]\h: \[$RESET\]\W\[$YELLOW\]\$(__git_ps1)\[$RESET\]: "
-
-if [ $IN_DOCKER -eq 0 ]; then
-    PS1="(DOCKER)$PS1"
-fi

@@ -66,3 +66,4 @@ alias jam-reset='jam ls | xargs jam remove && jam install'
 
 # Docker
 alias dc='docker-compose'
+alias b2d='boot2docker'

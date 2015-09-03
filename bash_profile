@@ -8,9 +8,6 @@ done
 # Required by rbenv
 eval "$(rbenv init -)"
 
-# Required by boot2docker
-which boot2docker &> /dev/null && $(boot2docker shellinit)
-
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 shopt -s extglob
