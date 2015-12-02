@@ -9,11 +9,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 
-# npm bin
-export PATH="node_modules/.bin:$PATH"
-
-# Sets nodejs path
-export NODE_PATH=$(npm root -g)
-
 # Set Java path (for Selenium)
 export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"

@@ -1,0 +1,9 @@
+# npm bin
+export PATH="node_modules/.bin:$PATH"
+
+# Sets nodejs path
+export NODE_PATH=$(npm root -g)
+
+# nvm
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
