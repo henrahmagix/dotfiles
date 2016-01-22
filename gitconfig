@@ -48,7 +48,7 @@
     plp = pull --prune
     pp = !git pull && git push
     pr = pull-request
-    ps = push --follow-tags
+    ps = push
     pst = push --tags
     psu = ![ '' != $(git symbolic-ref HEAD 2>/dev/null) ] && branch=$(git rev-parse --abbrev-ref HEAD) && remote=${1:-origin} && git push --set-upstream $remote $branch && exit 1
     r = remote
@@ -114,6 +114,7 @@
 
 [push]
     default = simple
+    followTags = true
 
 [rerere]
     enabled = 1
