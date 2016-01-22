@@ -99,6 +99,7 @@
 
 [diff]
     renames = copies
+    algorithm = patience
 
 [help]
     autocorrect = 0

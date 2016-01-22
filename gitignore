@@ -4,6 +4,7 @@
 *.un~
 .project
 .rvmrc
+.nvmrc
 ._*
 .venv
 .ropeproject
