@@ -1,5 +1,15 @@
 # Python-fu
 
+# Requirements:
+# - pip: `easy_install pip`
+# - virtualenvwrapper: `pip install virtualenvwrapper`
+# - autoenv: `brew install autoenv`
+
+# Usage:
+# - `mkvenv2` for Python2 projects
+# - `mkvenv3` for Python3 projects
+# - `mkvenv` to use the system Python version
+
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.venvs
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
