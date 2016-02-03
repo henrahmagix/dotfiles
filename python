@@ -1,7 +1,7 @@
 # Python-fu
 
 # virtualenvwrapper
-export WORKON_HOME=~/.venvs
+export WORKON_HOME=$HOME/.venvs
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
@@ -18,58 +18,54 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 function mkvenv {
     name=""
     if [ "${1}" == "" ]; then
-        PWD=`pwd`
         name=`basename $PWD`
         echo "Name not specified, using current dir: $name"
     else
         name=${1}
     fi
 
-    mkvirtualenv $name --distribute
+    python=""
+    if [ "${2}" == "" ]; then
+        python=`which python`
+        echo "Python version not specified, using default: `python --version` at $python"
+    else
+        python=${2}
+    fi
+
+    mkvirtualenv $name -a `pwd` -p $python
 
     # make a .env in the current directory for autoenv magic
     echo "workon $name" > .env
+
+    # fix libmemcached usage by pip under OS X: El Capitan
+    echo "export LIBMEMCACHED=`brew --prefix`" >> .env
 
     # symlink the venv to the current dir
     ln -s "$WORKON_HOME/$name" .venv
     echo "Symlinked $WORKON_HOME/$name to ./.venv"
 
-    # using mkvirtualenv this way seems to break workon
+    # activate the autoenv
+    cd .
+
+    # make sure the environment is activated
     workon $name
-}
 
-function linkautoenv {
-    name=${1}
-
-    # make a .env in the current directory for autoenv magic
-    echo "workon $name" > .env
-
-    # symlink the venv to the current dir
-    ln -s "$WORKON_HOME/$name" .venv
-    echo "Symlinked $WORKON_HOME/$name to ./.venv"
-
-    # using mkvirtualenv this way seems to break workon
-    workon $name
+    # if memcached isn't installed, say that it should
+    brew --prefix memcached >/dev/null 2>&1
+    if [ $? -eq 1 ]; then
+        echo "libmemcached is required: brew install memcached"
+    fi
 }
 
 # Create a virtual environment.
 function mkvenv3 {
-    defaultname=`basename $PWD`
-    name=${1:-$defaultname}
-    mkvirtualenv $name -a `pwd` -p `which python3`
-    linkautoenv $name
+    mkvenv ${1:-""} `which python3`
 }
 function mkvenv34 {
-    defaultname=`basename $PWD`
-    name=${1:-$defaultname}
-    mkvirtualenv $name -a `pwd` -p `which python3.4`
-    linkautoenv $name
+    mkvenv ${1:-""} `which python3.4`
 }
 function mkvenv2 {
-    defaultname=`basename $PWD`
-    name=${1:-$defaultname}
-    mkvirtualenv $name -a `pwd` -p `which python2`
-    linkautoenv $name
+    mkvenv ${1:-""} `which python2`
 }
 
 function fixclang {
