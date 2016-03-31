@@ -7,9 +7,11 @@
 .nvmrc
 ._*
 .venv
+.venv-*
+.env
+.env-*
 .ropeproject
 .sass-cache
-.env
 *.egg-info
 dist
 .links
