@@ -123,6 +123,9 @@
 [status]
     relativePaths = true
 
+[tag]
+    sort = version:refname
+
 [achievement]
     upload = true
 
