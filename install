@@ -9,7 +9,7 @@ DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 WRITEALL=0
 [[ $1 =~ ^-a$ ]] || [[ $1 =~ ^--all$ ]] && WRITEALL=1 && shift
 
-DOTFILES="ackrc aliases bash_profile completion gitconfig gitignore node path prompt python vars vimrc"
+DOTFILES="ackrc agignore aliases bash_profile completion gitconfig gitignore node path prompt python vars vimrc"
 
 # Get workplace/section specific dotfiles
 for INSTALLFILE in $@; do

@@ -11,3 +11,5 @@
 --ignore-dir=projectmigrations
 --ignore-dir=.venv
 --ignore-dir=.sass-cache
+--ignore=templates.js
+--ignore=i18n.js
