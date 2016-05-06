@@ -8,8 +8,9 @@ alias cl='clear'
 alias src='source ~/.bash_profile'
 alias acki='ack -i'
 # ag is no longer case-sensitive by default
-alias ag='ag -s'
-alias agi='ag -i'
+# --hidden allows searching of .travis.yml and others but obeys .agignore
+alias ag='ag -s --hidden'
+alias agi='ag -i --hidden'
 alias wcl='wc -l'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
