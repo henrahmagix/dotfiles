@@ -33,6 +33,7 @@
     dh = diff HEAD
     dhw = diff HEAD --ignore-all-space --color-words
     dw = diff --ignore-all-space --color-words
+    dr = diff-ignore-reorder
     f = fetch
     fa = fetch --all
     h = help
