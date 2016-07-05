@@ -28,11 +28,11 @@
     cav = commit -av
     d = diff
     dc = diff --cached
-    dcw = diff --cached --ignore-all-space
+    dcw = diff --cached --ignore-all-space --color-words
     df = diff --function-context
     dh = diff HEAD
-    dhw = diff HEAD --ignore-all-space
-    dw = diff --ignore-all-space
+    dhw = diff HEAD --ignore-all-space --color-words
+    dw = diff --ignore-all-space --color-words
     f = fetch
     fa = fetch --all
     h = help
