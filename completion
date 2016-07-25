@@ -5,11 +5,3 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     # Get bash completion working for the global git alias.
     __git_complete g __git_main
 fi
-
-# Grunt bash completion. First try local grunt-cli, then global grunt-cli.
-# Do nothing if neither exist.
-if [ -f $(npm bin)/grunt ]; then
-    eval "$($(npm bin)/grunt --completion=bash)"
-else
-    which grunt &>/dev/null && eval "$(grunt --completion=bash)"
-fi

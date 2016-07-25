@@ -16,6 +16,14 @@ load_nvm () {
 
     # Sets nodejs path.
     export NODE_PATH="$NODE_PATH:$(npm root -g)"
+
+    # Grunt bash completion. First try local grunt-cli, then global grunt-cli.
+    # Do nothing if neither exist.
+    if [ -f $(npm bin)/grunt ]; then
+        eval "$($(npm bin)/grunt --completion=bash)"
+    else
+        which grunt &>/dev/null && eval "$(grunt --completion=bash)"
+    fi
 }
 
 for cmd in "${NODE_GLOBALS[@]}"; do
