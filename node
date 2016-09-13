@@ -1,11 +1,6 @@
 # Lazy load nvm
 # https://www.reddit.com/r/node/comments/4tg5jg/lazy_load_nvm_for_faster_shell_start/d5ib9fs
 
-declare -a NODE_GLOBALS=($(find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq))
-
-NODE_GLOBALS+=("node")
-NODE_GLOBALS+=("nvm")
-
 load_nvm () {
     # Exit early for safety, in case this is called more than once.
     which node &>/dev/null && exit 0
@@ -16,7 +11,12 @@ load_nvm () {
 
     # Sets nodejs path.
     export NODE_PATH="$NODE_PATH:$(npm root -g)"
+}
 
+# Load nvm straight away so Sublime Text can use it for linters.
+load_nvm
+
+load_grunt_completion () {
     # Grunt bash completion. First try local grunt-cli, then global grunt-cli.
     # Do nothing if neither exist.
     if [ -f $(npm bin)/grunt ]; then
@@ -26,6 +26,18 @@ load_nvm () {
     fi
 }
 
-for cmd in "${NODE_GLOBALS[@]}"; do
-    eval "${cmd}(){ unset -f ${NODE_GLOBALS[@]}; load_nvm; ${cmd} \$@; }"
-done
+# Lazy-load grunt completion until nvm can be completely lazy-loaded.
+grunt () {
+    unset grunt
+    load_grunt_completion
+    grunt $@
+}
+
+# declare -a NODE_GLOBALS=($(find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq))
+
+# NODE_GLOBALS+=("node")
+# NODE_GLOBALS+=("nvm")
+
+# for cmd in "${NODE_GLOBALS[@]}"; do
+#     eval "${cmd}(){ unset -f ${NODE_GLOBALS[@]}; load_grunt_completion; ${cmd} \$@; }"
+# done
