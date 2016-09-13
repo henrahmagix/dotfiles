@@ -10,4 +10,7 @@ export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 
 # Set Java path (for Selenium)
-export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Set Android path (for Android builds)
+export ANDROID_HOME=/usr/local/opt/android-sdk
