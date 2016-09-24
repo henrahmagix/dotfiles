@@ -35,7 +35,9 @@
     dw = diff --ignore-all-space --color-words
     dr = diff-ignore-reorder
     f = fetch
+    fp = fetch --prune
     fa = fetch --all
+    fap = fetch --all --prune
     h = help
     ignored = !git ls-files -v $(git rev-parse --show-toplevel) | grep '^[[:lower:]]'
     l = log
