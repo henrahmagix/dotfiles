@@ -1,12 +1,9 @@
 # Load ~/.bash_prompt, ~/.vars, ~/.aliases, ~/.functions and ~/.extra
 # ~/.extra can be used for settings you don’t want to commit
-for file in path vars prompt aliases home-todo osx python node extra completion; do
+for file in path vars prompt aliases home-todo osx python node ruby extra completion; do
   file="$HOME/.$file"
   [ -e "$file" ] && source "$file"
 done
-
-# Required by rbenv
-eval "$(rbenv init -)"
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob

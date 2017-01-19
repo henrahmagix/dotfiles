@@ -1,6 +1,6 @@
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     # Source bash completion.
-    . $(brew --prefix)/etc/bash_completion
+    source $(brew --prefix)/etc/bash_completion
 
     # Get bash completion working for the global git alias.
     __git_complete g __git_main
