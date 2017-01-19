@@ -1,5 +1,8 @@
 # Python-fu
 
+# pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
 # Requirements:
 # - pip: `easy_install pip`
 # - virtualenvwrapper: `pip install virtualenvwrapper`
@@ -12,17 +15,14 @@
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.venvs
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+export VIRTUALENVWRAPPER_SCRIPT=$(pyenv which virtualenvwrapper.sh)
+source $(pyenv which virtualenvwrapper_lazy.sh)
 
 # Cache pip downloads
 export PIP_DOWNLOAD_CACHE=$HOME/Library/Caches/pip-downloads
 
 # autoenv
 source $(brew --prefix autoenv)/activate.sh
-
-# pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # make a python virtualenv with extra options
 function mkvenv {
