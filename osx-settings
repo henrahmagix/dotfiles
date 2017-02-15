@@ -58,6 +58,13 @@ function OSXSystemPrefs() {
 
     echo "Kill affected applications"
     for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
+
+    echo "Enable expand save panel by default" # http://www.defaults-write.com/expand-save-panel-default/
+    defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+    defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+    echo "Stop Photos from opening automatically" # http://www.defaults-write.com/stop-photos-from-opening-automatically/
+    defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 }
 
 source confirm.sh
