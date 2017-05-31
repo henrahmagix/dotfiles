@@ -1,54 +1,65 @@
 # Python-fu
 
 # pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+    pyenv virtualenvwrapper
+else
+    echo "Requires pyenv: brew install pyenv pyenv-virtualenv pyenv-virtualenvwrapper"
+fi
 
 # Requirements:
-# - pip: `easy_install pip`
-# - virtualenvwrapper: `pip install virtualenvwrapper`
+# - pyenv: `brew install pyenv` then `pyenv install 2.7.10` or other versions
+# - pip: installed via pyenv
+# - virtualenvwrapper: `brew install pyenv-virtualenv pyenv-virtualenvwrapper`
+# Optional:
 # - autoenv: `brew install autoenv`
 
 # Usage:
 # - `mkvenv2` for Python2 projects
 # - `mkvenv3` for Python3 projects
-# - `mkvenv` to use the system Python version
+# - `mkvenv` to use the default Python version
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.venvs
-export VIRTUALENVWRAPPER_SCRIPT=$(pyenv which virtualenvwrapper.sh)
-source $(pyenv which virtualenvwrapper_lazy.sh)
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export VIRTUALENVWRAPPER_WORKON_CD=
 
 # Cache pip downloads
 export PIP_DOWNLOAD_CACHE=$HOME/Library/Caches/pip-downloads
 
 # autoenv
-source $(brew --prefix autoenv)/activate.sh
+if ls $(brew --prefix autoenv) > /dev/null; then
+    source $(brew --prefix autoenv)/activate.sh
+fi
 
 # make a python virtualenv with extra options
 function mkvenv {
     name=""
     if [ "${1}" == "" ]; then
-        name=`basename $PWD`
+        name=$(basename $PWD)
         echo "Name not specified, using current dir: $name"
     else
         name=${1}
     fi
 
-    python=""
+    python_bin=""
     if [ "${2}" == "" ]; then
-        python=`which python`
-        echo "Python version not specified, using default: `python --version` at $python"
+        python_bin="python"
+        # python --version prints to stderr, so redirect to stdout.
+        # https://stackoverflow.com/a/37132287/3150057
+        echo "Python version not specified, using default: $(python --version 2>&1) at $(pyenv which $python_bin)"
     else
-        python=${2}
+        python_bin=${2}
     fi
 
-    mkvirtualenv $name -a `pwd` -p $python
+    mkvirtualenv $name -a $(pwd) -p $python_bin
 
     # make a .env in the current directory for autoenv magic
     echo "workon $name" > .env
 
     # fix libmemcached usage by pip under OS X: El Capitan
-    echo "export LIBMEMCACHED=`brew --prefix`" >> .env
+    echo "export LIBMEMCACHED=$(brew --prefix)" >> .env
 
     # symlink the venv to the current dir
     ln -s "$WORKON_HOME/$name" .venv
@@ -69,13 +80,10 @@ function mkvenv {
 
 # Create a virtual environment.
 function mkvenv3 {
-    mkvenv ${1:-""} `which python3`
-}
-function mkvenv34 {
-    mkvenv ${1:-""} `which python3.4`
+    mkvenv ${1:-""} python3
 }
 function mkvenv2 {
-    mkvenv ${1:-""} `which python2`
+    mkvenv ${1:-""} python2
 }
 
 function fixclang {
