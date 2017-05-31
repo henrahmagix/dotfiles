@@ -149,3 +149,5 @@
 [ghi]
     token = !security find-internet-password -a henrahmagix -s github.com -l 'ghi token' -w
     pager = less
+[diff "minjs"]
+	textconv = js-beautify
