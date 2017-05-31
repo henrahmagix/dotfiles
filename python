@@ -35,22 +35,22 @@ fi
 
 # make a python virtualenv with extra options
 function mkvenv {
-    name=""
-    if [ "${1}" == "" ]; then
-        name=$(basename $PWD)
-        echo "Name not specified, using current dir: $name"
-    else
-        name=${1}
-    fi
-
     python_bin=""
-    if [ "${2}" == "" ]; then
+    if [ "$1" == "" ]; then
         python_bin="python"
         # python --version prints to stderr, so redirect to stdout.
         # https://stackoverflow.com/a/37132287/3150057
         echo "Python version not specified, using default: $(python --version 2>&1) at $(pyenv which $python_bin)"
     else
-        python_bin=${2}
+        python_bin=$1
+    fi
+
+    name=""
+    if [ "$2" == "" ]; then
+        name=$(basename $PWD)
+        echo "Name not specified, using current dir: $name"
+    else
+        name=$2
     fi
 
     mkvirtualenv $name -a $(pwd) -p $python_bin
@@ -80,10 +80,10 @@ function mkvenv {
 
 # Create a virtual environment.
 function mkvenv3 {
-    mkvenv ${1:-""} python3
+    mkvenv python3 ${1:-""}
 }
 function mkvenv2 {
-    mkvenv ${1:-""} python2
+    mkvenv python2 ${1:-""}
 }
 
 function fixclang {
