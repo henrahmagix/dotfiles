@@ -16,3 +16,5 @@
 dist
 .links
 .wiki
+*.sublime-project
+*.sublime-workspace
