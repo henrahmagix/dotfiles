@@ -52,6 +52,7 @@
     ignored = !git ls-files -v $(git rev-parse --show-toplevel) | grep '^[[:lower:]]'
     l = log
     lf = log --follow
+    lp = log --patch
     lt = log --stat
     ld = log ORIG_HEAD.. --stat --no-merges
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
