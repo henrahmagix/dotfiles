@@ -36,6 +36,7 @@
     cv = commit -v
     cav = commit -av
     d = diff
+    dt = diff --stat
     dc = diff --cached
     dcw = diff --cached --ignore-all-space --color-words
     df = diff --function-context
@@ -51,6 +52,7 @@
     ignored = !git ls-files -v $(git rev-parse --show-toplevel) | grep '^[[:lower:]]'
     l = log
     lf = log --follow
+    lt = log --stat
     ld = log ORIG_HEAD.. --stat --no-merges
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
