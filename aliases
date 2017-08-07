@@ -21,6 +21,7 @@ alias nf='numfiles'
 alias chbg='changebackground'
 alias chdns='changedns'
 alias issym='issymlink'
+alias initgitscripts='source $(which init-git-scripts)'
 
 # cd
 alias ..='cd ..'
