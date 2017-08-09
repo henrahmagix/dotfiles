@@ -1,8 +1,13 @@
-# Load ~/.bash_prompt, ~/.vars, ~/.aliases, ~/.functions and ~/.extra
+SHOW_TIMING=0
+
 # ~/.extra can be used for settings you don’t want to commit
 for file in path vars prompt aliases home-todo osx python node ruby extra completion; do
   file="$HOME/.$file"
-  [ -e "$file" ] && source "$file"
+  if [ $SHOW_TIMING -eq 1 ]; then
+      [ -e "$file" ] && time source "$file" && echo "source $file"
+  else
+      [ -e "$file" ] && source "$file"
+  fi
 done
 
 # Case-insensitive globbing (used in pathname expansion)
