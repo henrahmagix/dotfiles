@@ -13,7 +13,6 @@
 .ropeproject
 .sass-cache
 *.egg-info
-dist
 .scripts
 .links
 .wiki
