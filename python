@@ -29,8 +29,12 @@ export VIRTUALENVWRAPPER_WORKON_CD=
 export PIP_DOWNLOAD_CACHE=$HOME/Library/Caches/pip-downloads
 
 # autoenv
-if ls $(brew --prefix autoenv) >/dev/null 2>&1; then
-    source $(brew --prefix autoenv)/activate.sh
+autoenv_activate=$(brew --prefix)/opt/autoenv/activate.sh
+if ! [ -f $autoenv_activate ]; then
+    autoenv_activate=$(brew --prefix autoenv)/activate.sh
+fi
+if ls $autoenv_activate >/dev/null 2>&1; then
+    source $autoenv_activate
 fi
 
 # make a python virtualenv with extra options
