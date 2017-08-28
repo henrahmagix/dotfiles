@@ -2,8 +2,8 @@
 
 # pyenv
 if which pyenv >/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-    pyenv virtualenvwrapper
+    eval "$(pyenv init - --no-rehash)"
+    pyenv virtualenvwrapper_lazy
 else
     echo "Requires pyenv: brew install pyenv pyenv-virtualenv pyenv-virtualenvwrapper"
 fi

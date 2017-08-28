@@ -1,2 +1,2 @@
 # Required by rbenv
-eval "$(rbenv init -)"
+eval "$(rbenv init - --no-rehash)"
