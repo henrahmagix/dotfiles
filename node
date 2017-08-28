@@ -1,13 +1,14 @@
 # Lazy load nvm
 # https://www.reddit.com/r/node/comments/4tg5jg/lazy_load_nvm_for_faster_shell_start/d5ib9fs
 
+export NVM_DIR="$HOME/.nvm"
+
 load_nvm () {
     # Exit early for safety, in case this is called more than once.
     type -t nvm >/dev/null && return
 
-    # Load nvm.
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    # Load nvm without setting default node version.
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
     # Sets nodejs path.
@@ -29,21 +30,26 @@ load_grunt_completion () {
 grunt () {
     unset grunt
     load_grunt_completion
-    grunt \$@
+    grunt $@
 }
 
 # Load nvm straight away so Sublime Text can use it for linters.
-NVM_LAZY_LOAD=0
+NVM_LAZY_LOAD=1
 
 if [ $NVM_LAZY_LOAD -eq 1 ]; then
-    declare -a NODE_GLOBALS=($(find $HOME/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq))
-
-    NODE_GLOBALS+=("node")
-    NODE_GLOBALS+=("nvm")
-
-    for cmd in "${NODE_GLOBALS[@]}"; do
-        eval "${cmd}(){ unset -f ${NODE_GLOBALS[@]}; load_nvm; ${cmd} \$@; }"
-    done
+    default_alias="$(cat $NVM_DIR/alias/default)"
+    if ! [ -f $NVM_DIR/versions/$default_alias ]; then
+        default_alias="node"
+    fi
+    latest_version="$(for version in $NVM_DIR/versions/$default_alias/*; do echo $version; done | sort | tail -1)"
+    export PATH="$latest_version/bin:$PATH"
+    function nvm {
+        unset nvm
+        echo "Loading nvm..."
+        load_nvm
+        echo "nvm $@"
+        nvm $@
+    }
 else
     load_nvm
 fi
