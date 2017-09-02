@@ -27,3 +27,9 @@ if [ $WRITEALL -eq 1 ]; then
 else
     dotfileLink $DIR $DOTFILES
 fi
+
+# Setup nvm default global packages to install.
+if [ -z "${NVM_DIR+x}" ]; then
+    source ./node
+fi
+ln -sf $DIR/node-default-globals.txt $NVM_DIR/default-packages
