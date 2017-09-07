@@ -8,4 +8,5 @@ gulp
 htmllint
 http-server
 js-beautify
+node-sass
 preact-cli
