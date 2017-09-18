@@ -23,6 +23,7 @@ fi
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.venvs
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+# This must also be added to the .env files
 export VIRTUALENVWRAPPER_WORKON_CD=
 
 # Cache pip downloads
@@ -64,6 +65,9 @@ function mkvenv {
 
     # fix libmemcached usage by pip under OS X: El Capitan
     echo "export LIBMEMCACHED=$(brew --prefix)" >> .env
+
+    # allow cd to work (bonkers, right?)
+    echo "export VIRTUALENVWRAPPER_WORKON_CD=" >> .env
 
     # symlink the venv to the current dir
     ln -s "$WORKON_HOME/$name" .venv
