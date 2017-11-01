@@ -33,3 +33,5 @@ if [ -z "${NVM_DIR+x}" ]; then
     source ./node
 fi
 ln -sf $DIR/node-default-globals.txt $NVM_DIR/default-packages
+
+which diff-so-fancy 2>&1 >/dev/null || (echo "Installing diff-so-fancy" && brew install diff-so-fancy)

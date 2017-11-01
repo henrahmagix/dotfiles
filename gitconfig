@@ -1,16 +1,11 @@
 [core]
     excludesfile = ~/.gitignore
     whitespace = blank-at-eol,cr-at-eol,tab-in-indent
-    pager = less -+S -+X -+F
+    pager = diff-so-fancy | less --tabs=4 -+S -+X -+F
     attributesfile = /Users/henry/.gitattributes
 
-[pager]
-    log = "diff-highlight | less -+S -+X -+F"
-    show = "diff-highlight | less -+S -+X -+F"
-    diff = "diff-highlight | less -+S -+X -+F"
-
 [interactive]
-    diffFilter = diff-highlight
+    diffFilter = diff-so-fancy
 
 [user]
     name = Henry Blyth
