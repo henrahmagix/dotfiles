@@ -1,7 +1,7 @@
 SHOW_TIMING=0
 
 # ~/.extra can be used for settings you don’t want to commit
-for file in path vars prompt aliases home-todo osx python node ruby extra completion; do
+for file in path vars prompt aliases home-todo osx python node ruby go extra completion; do
   file="$HOME/.$file"
   if [ $SHOW_TIMING -eq 1 ]; then
       [ -e "$file" ] && time source "$file" && echo "source $file"
