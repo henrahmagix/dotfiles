@@ -67,5 +67,6 @@ alias pipu='pip uninstall'
 alias jam-reset='jam ls | xargs jam remove && jam install'
 
 # Docker
+alias d='docker'
 alias dc='docker-compose'
 alias b2d='boot2docker'
