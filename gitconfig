@@ -5,7 +5,6 @@
     attributesfile = /Users/henry/.gitattributes
 
 [interactive]
-    diffFilter = diff-so-fancy
 
 [user]
     name = Henry Blyth
