@@ -33,6 +33,7 @@ alias v='mvim -v'
 
 # Git
 alias g='git'
+alias gnp='git --no-pager'
 # Keep git as command git so when anything else calls `git` it doesn't get hub.
 [[ -e $(which hub) ]] && alias g='hub'
 # Quick cd to root of git project
