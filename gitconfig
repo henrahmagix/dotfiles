@@ -31,7 +31,7 @@
     cv = commit -v
     cav = commit -av
     d = diff
-    dt = diff --stat
+    ds = diff --stat
     dc = diff --cached
     dcw = diff --cached --ignore-all-space --color-words
     df = diff --function-context
