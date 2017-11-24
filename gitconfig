@@ -32,14 +32,14 @@
     cav = commit -av
     d = diff
     ds = diff --stat
-    dw = diff --ignore-all-space --color-words
+    dw = diff --ignore-all-space
     dww = diff --ignore-all-space --color-words --word-diff-regex="[^[:space:]_,()\\'\\\"]+"
     dc = diff --cached
-    dcw = diff --cached --ignore-all-space --color-words
+    dcw = diff --cached --ignore-all-space
     dcww = diff --cached --ignore-all-space --color-words --word-diff-regex="[^[:space:]_,()\\'\\\"]+"
     df = diff --function-context
     dh = diff HEAD
-    dhw = diff HEAD --ignore-all-space --color-words
+    dhw = diff HEAD --ignore-all-space
     dhww = diff HEAD --ignore-all-space --color-words --word-diff-regex="[^[:space:]_,()\\'\\\"]+"
     dr = diff-ignore-reorder
     f = fetch
