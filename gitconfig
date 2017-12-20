@@ -151,12 +151,18 @@
 [ghi]
     token = !security find-internet-password -a henrahmagix -s github.com -l 'ghi token' -w
     pager = less
+
 [diff "minjs"]
 	textconv = js-beautify
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [rebase]
 	autoSquash = true
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
