@@ -13,7 +13,7 @@ export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
 if [ ! -d "$JAVA_HOME" ]
 then
-    export JAVA_HOME=$(/usr/libexec/java_home)
+    export JAVA_HOME=$(/usr/libexec/java_home >/dev/null 2>&1)
 fi
 
 # Set Android path (for Android builds)
