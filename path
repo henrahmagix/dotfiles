@@ -18,3 +18,6 @@ fi
 
 # Set Android path (for Android builds)
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
+# Golang
+export PATH="$HOME/go/bin:$PATH"
