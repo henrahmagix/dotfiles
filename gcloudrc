@@ -1,0 +1,9 @@
+export GCLOUD_PATH=$HOME/.gcloud/google-cloud-sdk
+
+# The next line updates PATH for the Google Cloud SDK.
+path_file=$GCLOUD_PATH/path.bash.inc
+if [ -f "$path_file" ]; then source "$path_file"; fi
+
+# The next line enables shell command completion for gcloud.
+completion_file=$GCLOUD_PATH/completion.bash.inc
+if [ -f "$completion_file" ]; then source "$completion_file"; fi
