@@ -88,6 +88,8 @@
     w = whatchanged
     in = !git fetch && git log ..origin/master
     out = !git fetch && git log origin/master..
+    showw = show --ignore-all-space
+    showww = show --ignore-all-space --color-words --word-diff-regex="[^[:space:]_,()\\'\\\"]+"
 
 [color]
     branch = auto
