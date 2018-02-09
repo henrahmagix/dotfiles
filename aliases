@@ -39,6 +39,7 @@ alias gnp='git --no-pager'
 [[ -e $(which hub) ]] && alias g='hub'
 # Quick cd to root of git project
 alias git-root='cd $(git rev-parse --show-toplevel)'
+alias gnew='newproject'
 
 # Gist
 alias gist='gist -o'
