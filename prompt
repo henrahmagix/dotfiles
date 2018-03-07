@@ -59,4 +59,4 @@ GIT_PS1_SHOWUNTRACKEDFILES=True
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=True
 
-PS1="\[$GREEN\]\u\[$RESET\]@\[$GREEN\]\h: \[$RESET\]\W\[$YELLOW\]\$(__git_ps1)\[$RESET\]: "
+PS1="\[$GREEN\]\u\[$RESET\]@\[$GREEN\]\h: \[$RESET\]\W\[$YELLOW\]\$(__git_ps1)\[$RESET\]\n$ "
