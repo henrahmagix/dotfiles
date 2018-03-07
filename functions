@@ -4,7 +4,7 @@ newproject() {
 
 	mkdir $dir
 	cd $dir
-	echo -e "# $title\n" > README.md
+	echo "# $title" > README.md
 	git init
 	git add .
 	git commit -m 'Initial commit'
