@@ -2,6 +2,8 @@
 # Make hardlinks to home directory.
 # - Workplace agnostic.
 
+which sleepwatcher >/dev/null || brew install sleepwatcher
+
 # Get the pwd of this script.
 DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -9,7 +11,7 @@ DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 WRITEALL=0
 [[ $1 =~ ^-a$ ]] || [[ $1 =~ ^--all$ ]] && WRITEALL=1 && shift
 
-DOTFILES="ackrc agignore aliases bash_profile completion functions gcloudrc gitattributes gitconfig gitignore go node path prompt python ruby vars vimrc"
+DOTFILES="ackrc agignore aliases bash_profile completion functions gcloudrc gitattributes gitconfig gitignore go node path prompt python ruby vars vimrc sleep wakeup"
 
 # Get workplace/section specific dotfiles
 for INSTALLFILE in $@; do
