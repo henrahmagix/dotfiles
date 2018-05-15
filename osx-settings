@@ -10,10 +10,10 @@ function OSXSystemPrefs() {
     defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
     echo "Set a blazingly fast keyboard repeat rate"
-    defaults write NSGlobalDomain KeyRepeat -float 0.02
+    defaults write -g KeyRepeat -float 0.02
 
     echo "Set a shorter Delay until key repeat"
-    defaults write NSGlobalDomain InitialKeyRepeat -int 12
+    defaults write -g InitialKeyRepeat -int 5
 
     echo "Increase window resize speed for Cocoa applications"
     defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
