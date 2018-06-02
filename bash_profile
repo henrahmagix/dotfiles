@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 SHOW_TIMING=0
 
 # ~/.extra can be used for settings you don’t want to commit
