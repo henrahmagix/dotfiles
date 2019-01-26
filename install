@@ -2,8 +2,6 @@
 # Make hardlinks to home directory.
 # - Workplace agnostic.
 
-which sleepwatcher >/dev/null || brew install sleepwatcher
-
 # Get the pwd of this script.
 DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
