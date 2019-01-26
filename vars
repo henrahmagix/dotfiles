@@ -1,5 +1,5 @@
-# Sublime Text as Default Editor
-export EDITOR="$(which subl) --wait"
+which code >/dev/null && export EDITOR="$(which code) --wait"
+which subl >/dev/null && export EDITOR="$(which subl) --wait"
 
 # Colours
 export CLICOLOR=1
