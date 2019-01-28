@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Use latest bash
+if [ ! -f /usr/local/bin/bash ]; then
+  echo "Not using latest bash: brew install bash"
+fi
+
 SHOW_TIMING=0
 
 # ~/.extra can be used for settings you don’t want to commit
