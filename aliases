@@ -23,6 +23,7 @@ alias chdns='changedns'
 alias issym='issymlink'
 alias initgitscripts='source $(which init-git-scripts)'
 alias dep='dep_from_symlinked'
+alias bf='build-failure'
 
 # cd
 alias ..='cd ..'
