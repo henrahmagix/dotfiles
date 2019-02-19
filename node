@@ -41,8 +41,8 @@ if [ $NVM_LAZY_LOAD -eq 1 ]; then
     if ! [ -f $NVM_DIR/versions/$default_alias ]; then
         default_alias="node"
     fi
-    latest_version="$(for version in $NVM_DIR/versions/$default_alias/*; do echo $version; done | sort | tail -1)"
-    export PATH="$latest_version/bin:$PATH"
+    latest_version="$(for version in $NVM_DIR/versions/$default_alias/*; do basename $version; done | sed 's/^v//g' | sort -n | tail -1)"
+    export PATH="$NVM_DIR/versions/$default_alias/v$latest_version/bin:$PATH"
     function nvm {
         unset nvm
         echo "Loading nvm..."
