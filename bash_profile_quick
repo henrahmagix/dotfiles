@@ -145,7 +145,6 @@ alias jam-reset='jam ls | xargs jam remove && jam install'
 
 # Docker
 alias dc='docker-compose'
-alias b2d='boot2docker'
 alias flushDNS='sudo killall -HUP mDNSResponder'
 alias chrome-canary='open /Applications/Google\ Chrome\ Canary.app/'
 alias chrome-canary-no-security='chrome-canary --args --disable-web-security'
