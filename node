@@ -37,12 +37,6 @@ grunt () {
 NVM_LAZY_LOAD=1
 
 if [ $NVM_LAZY_LOAD -eq 1 ]; then
-    default_alias="$(cat $NVM_DIR/alias/default)"
-    if ! [ -f $NVM_DIR/versions/$default_alias ]; then
-        default_alias="node"
-    fi
-    latest_version="$(for version in $NVM_DIR/versions/$default_alias/*; do basename $version; done | sed 's/^v//g' | sort -n | tail -1)"
-    export PATH="$NVM_DIR/versions/$default_alias/v$latest_version/bin:$PATH"
     function nvm {
         unset nvm
         echo "Loading nvm..."
@@ -50,6 +44,30 @@ if [ $NVM_LAZY_LOAD -eq 1 ]; then
         echo "nvm $@"
         nvm $@
     }
+
+    node_bin_path=
+    if [ -f .nvmrc ]; then
+        version="$(cat .nvmrc)"
+        node_bin_path="$NVM_DIR/versions/node/v${version#v}/bin"
+        if ! [ -d $node_bin_path ]; then
+            echo "Cannot quick-load node from .nvmrc: $version"
+            node_bin_path=
+        fi
+    else
+        default_alias="$(cat $NVM_DIR/alias/default)"
+        if ! [ -f $NVM_DIR/versions/$default_alias ]; then
+            default_alias="node"
+        fi
+        latest_version="$(for version in $NVM_DIR/versions/$default_alias/*; do basename $version; done | sed 's/^v//g' | sort -n | tail -1)"
+        node_bin_path="$NVM_DIR/versions/$default_alias/v$latest_version/bin"
+        if ! [ -d $node_bin_path ]; then
+            echo "Cannot quick-load node from default alias: $default_alias"
+            node_bin_path=
+        fi
+    fi
+    if [ -n "$node_bin_path" ]; then
+        export PATH="$node_bin_path:$PATH"
+    fi
 else
     load_nvm
 fi
