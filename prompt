@@ -59,4 +59,12 @@ GIT_PS1_SHOWUNTRACKEDFILES=True
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=True
 
-PS1="\[$GREEN\]\u\[$RESET\]@\[$GREEN\]\h: \[$RESET\]\W\[$YELLOW\]\$(__git_ps1)\[$RESET\]\n$ "
+function __pivotal_id() {
+  PS1_PIVOTAL_ID=" "
+  if [ -n "$PIVOTAL_ID" ]; then
+    PS1_PIVOTAL_ID=" [#$PIVOTAL_ID]"
+  fi
+  echo $PS1_PIVOTAL_ID
+}
+
+PS1="\[$GREEN\]\u\[$RESET\]@\[$GREEN\]\h: \[$RESET\]\W\$(__pivotal_id)\[$YELLOW\]\$(__git_ps1)\[$RESET\]\n$ "
