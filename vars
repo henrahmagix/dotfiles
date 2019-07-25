@@ -1,6 +1,6 @@
 export EDITOR="vim +star"
-which code >/dev/null && export EDITOR="$(which code) --wait"
 which subl >/dev/null && export EDITOR="$(which subl) --wait"
+which code >/dev/null && export EDITOR="$(which code) --wait"
 
 # Colours
 export CLICOLOR=1
