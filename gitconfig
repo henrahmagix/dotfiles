@@ -115,6 +115,15 @@
     changed = green
     untracked = cyan
 
+[color "diff-highlight"]
+    oldNormal = red
+    oldHighlight = red 216
+    newNormal = green
+    newHighlight = green 193
+
+[diff-so-fancy]
+    first-run = false
+
 [diff]
     renames = copies
     algorithm = patience
