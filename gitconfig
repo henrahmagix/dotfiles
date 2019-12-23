@@ -38,6 +38,7 @@
     dw = diff --ignore-all-space
     dww = diff --ignore-all-space --color-words --word-diff-regex="[^[:space:]_,()\\'\\\"]+"
     dc = diff --cached
+    dcs = diff --cached --stat
     dcw = diff --cached --ignore-all-space
     dcww = diff --cached --ignore-all-space --color-words --word-diff-regex="[^[:space:]_,()\\'\\\"]+"
     df = diff --function-context
