@@ -48,10 +48,12 @@ if [ $NVM_LAZY_LOAD -eq 1 ]; then
     node_bin_path=
     if [ -f .nvmrc ]; then
         version="$(cat .nvmrc)"
-        node_bin_path="$NVM_DIR/versions/node/v${version#v}/bin"
+        node_bin_path="$NVM_DIR/versions/node/v${version#v}*/bin"
         if ! [ -d $node_bin_path ]; then
             echo "Cannot quick-load node from .nvmrc: $version"
             node_bin_path=
+        else
+            node_bin_path="$(cd $node_bin_path && pwd -P)"
         fi
     else
         default_alias="$(cat $NVM_DIR/alias/default)"
