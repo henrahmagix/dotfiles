@@ -4,6 +4,9 @@
     pager = diff-so-fancy | less --tabs=4 -+S -+X -+F
     attributesfile = ~/.gitattributes
 
+[advice]
+    statusHints = false
+
 [pager]
     branch = 0
 
