@@ -73,5 +73,5 @@ alias jam-reset='jam ls | xargs jam remove && jam install'
 # Docker
 alias d='docker'
 alias dc='docker-compose'
-alias dcls='ls -lah ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2'
+alias dcls='ls -lah ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.raw'
 alias cloud-build-local-images='docker ps -a -q --filter "name=step_[0-9]+|cloudbuild_|metadata"'
