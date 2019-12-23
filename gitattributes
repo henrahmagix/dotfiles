@@ -1,2 +1,5 @@
 *.min.js diff=minjs
 dist/**/*.js diff=minjs
+*.min.css diff=mincss
+dist/**/*.css diff=mincss
+public/**/*.css diff=mincss
