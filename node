@@ -55,7 +55,7 @@ if [ $NVM_LAZY_LOAD -eq 1 ]; then
         else
             node_bin_path="$(cd $node_bin_path && pwd -P)"
         fi
-    else
+    elif [ -d "$NVM_DIR" ]; then
         default_alias="$(cat $NVM_DIR/alias/default)"
         if ! [ -f $NVM_DIR/versions/$default_alias ]; then
             default_alias="node"
