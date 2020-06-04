@@ -11,7 +11,7 @@ SHOW_TIMING=0
 for file in path vars prompt aliases functions home-todo osx python node ruby go gcloudrc extra completion; do
   file="$HOME/.$file"
   if [ $SHOW_TIMING -eq 1 ]; then
-      [ -e "$file" ] && time source "$file" && echo "source $file"
+      [ -e "$file" ] && echo -n "source $file" && time source "$file"
   else
       [ -e "$file" ] && source "$file"
   fi
