@@ -33,7 +33,6 @@ grunt () {
     grunt $@
 }
 
-# Load nvm straight away so Sublime Text can use it for linters.
 NVM_LAZY_LOAD=1
 
 if [ $NVM_LAZY_LOAD -eq 1 ]; then

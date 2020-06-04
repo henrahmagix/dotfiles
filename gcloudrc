@@ -8,5 +8,22 @@ if [ -f "$path_file" ]; then source "$path_file"; fi
 completion_file=$GCLOUD_PATH/completion.bash.inc
 if [ -f "$completion_file" ]; then source "$completion_file"; fi
 
-# The next line enables shell command completion for kubectl.
-if which kubectl >/dev/null; then source <(kubectl completion bash); fi
+if which kubectl >/dev/null; then
+    load_kubectl () {
+        # Enable shell command completion for kubectl.
+        source <(kubectl completion bash)
+    }
+
+    KUBECTL_LAZY_LOAD=1
+    if [ $KUBECTL_LAZY_LOAD -eq 1 ]; then
+        function kubectl {
+            unset kubectl
+            echo "Loading kubectl..."
+            load_kubectl
+            echo "kubectl $@"
+            kubectl $@
+        }
+    else
+        load_kubectl
+    fi
+fi

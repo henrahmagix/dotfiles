@@ -29,9 +29,6 @@ export PIP_DOWNLOAD_CACHE=$HOME/Library/Caches/pip-downloads
 
 # autoenv
 autoenv_activate=$(brew --prefix)/opt/autoenv/activate.sh
-if ! [ -f $autoenv_activate ]; then
-    autoenv_activate=$(brew --prefix autoenv)/activate.sh
-fi
 if ls $autoenv_activate >/dev/null 2>&1; then
     source $autoenv_activate
 fi
