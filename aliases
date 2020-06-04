@@ -15,6 +15,7 @@ alias wcl='wc -l'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias mkdir='mkdir -pv'
+alias less='less -R'
 
 # scripts
 alias nf='numfiles'
