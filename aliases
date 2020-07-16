@@ -43,6 +43,9 @@ alias gnp='git --no-pager'
 alias git-root='cd $(git rev-parse --show-toplevel)'
 alias gnew='newproject'
 
+# Stop accidental starts of GhostScript
+alias gs=''
+
 # Gist
 alias gist='gist -o'
 
@@ -76,3 +79,6 @@ alias d='docker'
 alias dc='docker-compose'
 alias dcls="docker images --format '{{.Size}}\t{{.Repository}}\t{{.Tag}}\t{{.ID}}' | sed 's/ //' | sort -h | column -t"
 alias cloud-build-local-images='docker ps -a -q --filter "name=step_[0-9]+|cloudbuild_|metadata"'
+
+# Kubernetes
+alias k='kubectl'
