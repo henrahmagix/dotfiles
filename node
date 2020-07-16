@@ -8,8 +8,12 @@ load_nvm () {
     type -t nvm >/dev/null && return
 
     # Load nvm without setting default node version.
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    if [ -s "$NVM_DIR/nvm.sh" ]; then
+        \. "$NVM_DIR/nvm.sh" --no-use
+    elif [ -s /usr/local/opt/nvm/nvm.sh ]; then
+        \. /usr/local/opt/nvm/nvm.sh --no-use
+    fi
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # if in brew, bash_completion is already loaded
 
     # Sets nodejs path.
     export NODE_PATH="$NODE_PATH:$(npm root -g)"
