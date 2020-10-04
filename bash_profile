@@ -22,7 +22,7 @@ shopt -s nocaseglob
 shopt -s extglob
 
 # Double-asterisk wildcard globbing
-shopt globstar >/dev/null 2>&1 && shopt -s globstar
+shopt globstar 2>&1 | grep -qv 'invalid shell option' && shopt -s globstar
 
 # Allow expansion of $! variables with space
 bind Space:magic-space
