@@ -58,6 +58,7 @@
     l = log
     lf = log --follow
     lp = log --patch
+    lpw = log --patch --ignore-all-space
     lt = log --stat
     ld = log ORIG_HEAD.. --stat --no-merges
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
