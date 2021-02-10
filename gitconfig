@@ -23,6 +23,7 @@
     au = add -u
     # hub overrides alias, so call original command.
     al = !git alias
+    back = reset --soft HEAD~1
     b = branch
     ba = branch -a
     bd = branch -d
