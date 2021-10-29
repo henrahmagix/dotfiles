@@ -17,6 +17,9 @@ for file in path vars prompt aliases functions home-todo osx python node ruby go
   fi
 done
 
+unset SHOW_TIMING
+unset file
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 shopt -s extglob
