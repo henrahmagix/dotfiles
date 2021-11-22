@@ -1,0 +1,36 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"ackrc": "shellscript",
+			"agignore": "shellscript",
+			"aliases": "shellscript",
+			"bash_profile": "shellscript",
+			"bash_profile_quick": "shellscript",
+			"completion": "shellscript",
+			"functions": "shellscript",
+			"gcloudrc": "shellscript",
+			"gitattributes": "shellscript",
+			"gitconfig": "shellscript",
+			"gitignore": "shellscript",
+			"go": "shellscript",
+			"home-install": "shellscript",
+			"home-todo": "shellscript",
+			"install": "shellscript",
+			"node": "shellscript",
+			"osx": "shellscript",
+			"osx-install": "shellscript",
+			"osx-settings": "shellscript",
+			"path": "shellscript",
+			"prompt": "shellscript",
+			"python": "shellscript",
+			"ruby": "shellscript",
+			"vars": "shellscript",
+			"vimrc": "shellscript",
+		}
+	}
+}
