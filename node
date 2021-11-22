@@ -10,8 +10,8 @@ load_nvm () {
     # Load nvm without setting default node version.
     if [ -s "$NVM_DIR/nvm.sh" ]; then
         \. "$NVM_DIR/nvm.sh" --no-use
-    elif [ -s /usr/local/opt/nvm/nvm.sh ]; then
-        \. /usr/local/opt/nvm/nvm.sh --no-use
+    elif [ -s $(brew --prefix)/opt/nvm/nvm.sh ]; then
+        \. $(brew --prefix)/opt/nvm/nvm.sh --no-use
     fi
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # if in brew, bash_completion is already loaded
 
