@@ -18,9 +18,9 @@ if which kubectl >/dev/null; then
     if [ $KUBECTL_LAZY_LOAD -eq 1 ]; then
         function kubectl {
             unset kubectl
-            echo "Loading kubectl..."
+            echo >&2 "Loading kubectl..."
             load_kubectl
-            echo "kubectl $@"
+            echo >&2 "kubectl $@"
             kubectl $@
         }
     else
