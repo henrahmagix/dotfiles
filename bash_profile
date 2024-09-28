@@ -24,3 +24,4 @@ shopt globstar 2>&1 | grep -qv 'invalid shell option' && shopt -s globstar
 
 # Allow expansion of $! variables with space
 bind Space:magic-space
+export HISTCONTROL=ignoredups
