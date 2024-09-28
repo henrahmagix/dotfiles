@@ -22,3 +22,5 @@ export TERM=xterm-256color
 # Disable brew analytics.
 export HOMEBREW_NO_ANALYTICS=1
 
+# Disable zsh message from macOS
+export BASH_SILENCE_DEPRECATION_WARNING=1
