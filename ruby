@@ -6,4 +6,5 @@ fi
 
 # https://github.com/fohte/rubocop-daemon#use-with-bundler
 export RUBOCOP_DAEMON_USE_BUNDLER=true
-export PATH="$HOME/bin/rubocop-daemon-wrapper:$PATH"
+# Don't add to PATH because we're symlinking the rbenv shim instead, so it uses bundler per gemset.
+# export PATH="$HOME/bin/rubocop-daemon-wrapper:$PATH"
