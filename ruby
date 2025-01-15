@@ -8,3 +8,6 @@ fi
 export RUBOCOP_DAEMON_USE_BUNDLER=true
 # Don't add to PATH because we're symlinking the rbenv shim instead, so it uses bundler per gemset.
 # export PATH="$HOME/bin/rubocop-daemon-wrapper:$PATH"
+
+# This fixes spring for some reason: see https://github.com/ged/ruby-pg/issues/311#issuecomment-1609970533
+export PGGSSENCMODE="disable"
