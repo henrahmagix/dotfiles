@@ -24,11 +24,11 @@
     # hub overrides alias, so call original command.
     al = !git alias
     back = reset --soft HEAD~1
-    b = branch
+    b = branch --sort=committerdate
     ba = branch -a
     bd = branch -d
-    bv = branch --verbose
-    bvv = branch -vv
+    bv = b --verbose
+    bvv = b -vv
     co = checkout
     cob = checkout -b
     cl = clone
